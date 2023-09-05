@@ -65,8 +65,8 @@ def align_e3_ligand(docked_E3_ligand_pose, origin_protac):
 
     protac_mol_addh = Chem.AddHs(protac_mol)
 
-    protac_mol_addh_conf = protac_mol_addh.GetConformer()
-    print(protac_mol_addh_conf.GetAtomPosition(0).x)
+    # protac_mol_addh_conf = protac_mol_addh.GetConformer()
+    # print(protac_mol_addh_conf.GetAtomPosition(0).x)
 
     #### first step
     prbcid = AllChem.EmbedMolecule(protac_mol_addh, coordMap=match_dict, useMacrocycleTorsions=True)
@@ -104,8 +104,8 @@ if __name__ == '__main__':
 
     aligned_protac_sdf = os.path.join(base_dir, 'my_script', 'last_protac_align.sdf')
 
-    # align_e3_ligand(docked_E3_ligand_pose=docked_pose_sdf,
-    #                 origin_protac=origin_protac_sdf)
+    align_e3_ligand(docked_E3_ligand_pose=docked_pose_sdf,
+                    origin_protac=origin_protac_sdf)
 
     constrained_minimization(docked_pose_sdf, aligned_protac_sdf)
 
